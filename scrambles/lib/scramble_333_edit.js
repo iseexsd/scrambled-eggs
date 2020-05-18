@@ -1087,8 +1087,12 @@ var scramble_333 = (function(getNPerm, get8Perm, setNPerm, set8Perm, getNParity,
 
     function getRandomScramble(amount) {
         let scrambles = []
-        for(let i = 0; i < amount; i++) {
-            scrambles[i] = getAnyScramble(0xfff, 0xfff, 0xff, 0xff)
+        if(amount > 1) {
+            for(let i = 0; i < amount; i++) {
+                scrambles[i] = getAnyScramble(0xfff, 0xfff, 0xff, 0xff)
+            }
+        } else {
+            scrambles[0] = getAnyScramble(0xfff, 0xfff, 0xff, 0xff)
         }
         return scrambles
     }

@@ -2521,8 +2521,12 @@ var scramble_444 = (function(rn, Cnk, circle) {
 
   function getRandomScramble(amount) {
     let scrambles = []
-    for(let i = 0; i < amount; i++) {
-      scrambles[i] = (scramble_333.getRandomScramble() + $randomState(searcher, Math)).replace(/\s+/g, ' ')
+    if(amount > 1) {
+      for(let i = 0; i < amount; i++) {
+        scrambles[i] = (scramble_333.getRandomScramble() + $randomState(searcher, Math)).replace(/\s+/g, ' ')
+      }
+    } else {
+      scrambles[0] = (scramble_333.getRandomScramble() + $randomState(searcher, Math)).replace(/\s+/g, ' ')
     }
     return scrambles
   }
